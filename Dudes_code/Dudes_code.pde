@@ -1,5 +1,5 @@
-Dudes dude1 = new Dudes(25 , "love");
-Dudes dude2 = new Dudes(25 , "hate");
+Dudes dude1 = new Dudes(25 , 1);
+Dudes dude2 = new Dudes(25 , 0);
 
 void setup() {
   size(400,400);
@@ -7,8 +7,8 @@ void setup() {
 
 void draw(){
   background(0);
-  dude1.update();
+  dude1.update(dude2);
   dude1.show();
-  dude2.update();
+  dude2.update(dude1);
   dude2.show();
 }
