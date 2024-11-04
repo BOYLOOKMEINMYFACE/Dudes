@@ -8,24 +8,24 @@ public class Dudes {
   public float y;
   private float vY;
 
-  private int state; // 1 is love , 0 is hate
+  private boolean love; // True is love , False is hate
+  private boolean otherLove;
 
   private float otherX;
   private float otherY;
   private float otherR;
   private float dis;
-  private float otherState;
 
 
-  public Dudes(color dudeColor, float r, int emo) {
+  public Dudes(color dudeColor, float r, boolean emo) {
     this.dudeColor = dudeColor;
     this.r = r;
     this.x = random(this.r, 400 - this.r);
     this.y = random(this.r, 400 - this.r);
-    state = emo;
+    love = emo;
 
-    vX = random(2, 5);
-    vY = random(2, 5);
+    vX = random(2, 10);
+    vY = random(2, 10);
   }
 
   public void update(Dudes other) {
@@ -51,7 +51,7 @@ public class Dudes {
     otherY = other.y;
     otherR = other.r;
     dis = dist(x, y, otherX, otherY);
-    otherState = other.state;
+    otherLove = other.love;
   }
 
   private void move() {
@@ -60,12 +60,11 @@ public class Dudes {
   }
 
   private void updateCollision() {
-    if ( dis <= r + otherR && (state + otherState < 2)) {
+    if ( dis <= r + otherR && !(love && otherLove)) {
       vX *= -1;
       vY *= -1;
       x += vX;
       y += vY;
-      show();
     }
   }
 

@@ -1,5 +1,5 @@
-Dudes dude1 = new Dudes(#FFFFFF, 25 , 1);
-Dudes dude2 = new Dudes(#CCCCCC, 25 , 0);
+Dudes dude1 = new Dudes(#FFFFFF, 25 , true);
+Dudes dude2 = new Dudes(#CCCCCC, 25 , false);
 
 void setup() {
   size(400,400);
