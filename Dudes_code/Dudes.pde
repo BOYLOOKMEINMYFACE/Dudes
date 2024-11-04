@@ -1,13 +1,12 @@
 public class Dudes {
+  private color dudeColor;
   private float r;
 
-  public  float x;
+  public float x;
   private float vX;
-  private float vXf;
 
   public float y;
   private float vY;
-  private float vYf;
 
   private int state; // 1 is love , 0 is hate
 
@@ -15,57 +14,61 @@ public class Dudes {
   private float otherY;
   private float otherR;
   private float dis;
+  private float otherState;
 
 
-  public Dudes(float r, int emo) {
+  public Dudes(color dudeColor, float r, int emo) {
+    this.dudeColor = dudeColor;
     this.r = r;
     this.x = random(this.r, 400 - this.r);
     this.y = random(this.r, 400 - this.r);
     state = emo;
 
-    vXf = int(random(2, 5));
-    vYf = int(random(2, 5));
-    while (vXf == vYf) {
-      vYf = int(random(2, 5));
-    }
-
-    vX = vXf;
-    vY = vYf;
+    vX = random(2, 5);
+    vY = random(2, 5);
   }
 
   public void update(Dudes other) {
-    //Move
-    x += vX;
-    y += vY;
+    move();
 
-    dis = dist(x, y, otherX, otherY);
+    //Grab the other dude's stat
+    getOtherDude(other);
 
-    otherX = other.x;
-    otherY = other.y;
-    otherR = other.r;
-
-    //Check if hits the wall
-    checkBound();
-    
     //Check collision
     updateCollision();
+    
+    //Check if hits the wall
+    checkBound();
   }
 
   public void show() {
-    fill(255, 255, 255);
+    fill(dudeColor);
     circle(this.x, this.y, r * 2);
   }
-  
+
+  private void getOtherDude(Dudes other) {
+    otherX = other.x;
+    otherY = other.y;
+    otherR = other.r;
+    dis = dist(x, y, otherX, otherY);
+    otherState = other.state;
+  }
+
+  private void move() {
+    x += vX;
+    y += vY;
+  }
+
   private void updateCollision() {
-    if ( dis <= r + otherR){
-      float overlap = abs(r + otherR - dis);
+    if ( dis <= r + otherR && (state + otherState < 2)) {
       vX *= -1;
       vY *= -1;
-      x += vX + overlap;
-      y += vY + overlap;
+      x += vX;
+      y += vY;
+      show();
     }
   }
-  
+
   private void checkBound() {
     if (x - r <= 0 || x + r >= 400) {
       vX *= -1;
