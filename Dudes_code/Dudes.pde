@@ -6,7 +6,6 @@ public class Dudes {
   private float r;
 
   private boolean love; // True is love , False is hate
-  private boolean otherLove;
 
   public Dudes(color dudeColor, float r, boolean emo) {
     this.r = r;
@@ -14,7 +13,11 @@ public class Dudes {
     love = emo;
 
     vPos = new PVector(random(this.r, 400 - this.r), random(this.r, 400 - this.r));
-    vDir = new PVector(random(3, 7), random(3, 7));
+    if (love){
+      vDir = new PVector(random(3, 5), random(3, 5));
+    } else {
+      vDir = new PVector(random(6, 8), random(6, 8));
+    }
     velocity = vDir.mag();
   }
 
@@ -67,7 +70,7 @@ public class Dudes {
   private boolean collide(Dudes other) {
     float otherR = other.getRadius();
     float dist = dist(vPos.x, vPos.y, otherPos.x, otherPos.y);
-    if ( dist <= (r + otherR) && !(love && otherLove)) {
+    if ( dist <= (r + otherR)) {
       return true;
     }
     return false;
