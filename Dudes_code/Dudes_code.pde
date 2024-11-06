@@ -8,7 +8,7 @@ void setup() {
 void draw(){
   background(0);
   dude1.update(dude2);
-  dude2.update(dude1);
+  dude2.update();
   dude1.show();
   dude2.show();
 }
