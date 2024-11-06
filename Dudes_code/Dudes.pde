@@ -38,8 +38,11 @@ public class Dudes {
   private void checkCollision(Dudes other){
     PVector otherV = other.getPos();
     float otherR = other.getRadius();
+    println(otherV);
+    println(otherR);
+    float dist = vPos.sub(otherV).mag();
     
-    if ( vPos.sub(otherV).mag() <= (r + otherR) && !(love && otherLove)) {
+    if ( dist <= (r + otherR) && !(love && otherLove)) {
       
     }
   
