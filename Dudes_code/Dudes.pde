@@ -1,4 +1,5 @@
 public class Dudes {
+  private Dudes[] allDudes;
   private PVector vPos, vDir, otherPos;
   private float velocity;
 
@@ -12,12 +13,17 @@ public class Dudes {
     this.dudeColor = dudeColor;
     love = emo;
 
-    vPos = new PVector(random(this.r, 400 - this.r), random(this.r, 400 - this.r));
+    initializeDude();
+  }
+  
+  private void initializeDude(){
+    vPos = new PVector(random(r, 800 - r), random(r, 800 - r));
     if (love){
       vDir = new PVector(random(3, 5), random(3, 5));
     } else {
       vDir = new PVector(random(6, 8), random(6, 8));
     }
+    
     velocity = vDir.mag();
   }
 
@@ -41,6 +47,10 @@ public class Dudes {
   public void show() {
     fill(dudeColor);
     circle(vPos.x, vPos.y, r * 2);
+  }
+  
+  public void setDudes(Dudes[] allDudes){
+    this.allDudes = allDudes;
   }
   
   //getter functions to grab the other dude's position
@@ -85,10 +95,10 @@ public class Dudes {
   
   //make sure dudes bounce off of walls
   private void updateWall() {
-    if (vPos.x - r <= 0 || vPos.x + r >= 400) {
+    if (vPos.x - r <= 0 || vPos.x + r >= 800) {
       vDir.set(-vDir.x, vDir.y);
     }
-    if (vPos.y - r <= 0 || vPos.y + r >= 400) {
+    if (vPos.y - r <= 0 || vPos.y + r >= 800) {
       vDir.set(vDir.x, -vDir.y);
     }
   }
