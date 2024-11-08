@@ -22,7 +22,7 @@ Dude dude6 = new Dude(25, false);
 Dude[] allDudes = {dude1, dude2, dude3, dude4, dude5, dude6};
 
 void setup() {
-  size(800, 800);
+  size(800,800);
   for (int i = 0; i < allDudes.length; i++) {
     allDudes[i].setDudes(allDudes);
   }
