@@ -34,6 +34,8 @@ void draw() {
   background(0);
   for (int i = 0; i < allDudes.length; i++) {
     allDudes[i].update();
+  }
+  for (int i = 0; i < allDudes.length; i++) {
     allDudes[i].show();
   }
 }
