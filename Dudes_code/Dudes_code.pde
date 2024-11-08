@@ -6,6 +6,8 @@
  * Dudes have love hate relationships and they can be assigned a loved one.
  * If they are haters, they will only roam around randomly.
  * If they are lovers, they will chase the dude they love.
+ * There are very strong competitions between the lovers,
+ * So a dude can only be loved by one other dude.
  * Sometimes when dudes are forced into a corner, the lovers get them.
  */
 
@@ -17,10 +19,10 @@ Dude dude4 = new Dude(25, false);
 Dude dude5 = new Dude(40, false);
 Dude dude6 = new Dude(25, false);
 
-Dude[] allDudes = {dude1, dude2, dude3, dude4, dude5, dude6};
 
 void setup() {
   size(800, 800);
+  Dude[] allDudes = {dude1, dude2, dude3, dude4, dude5, dude6};
   for (int i = 0; i < allDudes.length; i++) {
     allDudes[i].setDudes(allDudes);
   }
