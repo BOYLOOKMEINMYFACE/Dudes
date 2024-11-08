@@ -14,7 +14,7 @@
 
 Dude dude1 = new Dude(40, true);
 Dude dude2 = new Dude(25, false);
-Dude dude3 = new Dude(40, true);
+Dude dude3 = new Dude(40, false);
 Dude dude4 = new Dude(25, false);
 Dude dude5 = new Dude(40, false);
 Dude dude6 = new Dude(25, false);
